@@ -1,0 +1,35 @@
+<section class=" vh-100" id="demo">
+</section>
+
+<div class="login-box">
+    <h2>Login</h2>
+    <form [formGroup]="signInForm" (ngSubmit)="submitSignInForm(signInForm)">
+      <div *ngIf="errorMessage" class="alert text-danger">{{errorMessage}}</div>
+      <div class="user-box">
+        <input type="text" name="" required="" formControlName="email">
+        <label>User Email</label>
+        <div *ngIf="signInForm.get('email')?.errors&&signInForm.get('email')?.touched" class="alert text-danger">
+          <p *ngIf="signInForm.get('email')?.getError('required')" class="text-danger">Email is Required</p>
+          <p *ngIf="signInForm.get('email')?.getError('email')" class="text-danger">E-Mail format is Required</p>
+        </div>
+      </div>
+      <div class="user-box">
+        <input formControlName="password" type="password" name="" required="">
+        <label>Password</label>
+        <div *ngIf="signInForm.get('password')?.errors&&signInForm.get('password')?.touched" class="alert text-danger">
+          <p *ngIf="signInForm.get('password')?.getError('required')" class="text-danger">password is Required</p>
+          <p *ngIf="signInForm.get('password')?.getError('pattern')" class="text-danger">pattern is in valid</p>
+        </div>
+      </div>
+      <a >
+        <button [disabled]="signInForm.invalid" type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+        </button>
+
+      </a>
+    </form>
+  </div>
